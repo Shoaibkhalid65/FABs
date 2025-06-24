@@ -1,0 +1,16 @@
+Floating Action Button :
+       A button that is floated on the screen like something is floating on water.It is used for primary actions like to insert the
+       new note in notes app or add a contact in contacts or networking app.
+
+FAB in compose:
+ Compose provides us a lot of variety of FABs
+Compose gives us many types FABs to use individual according to the given condition
+Types of FABs:
+1.FloatingActionButton
+2.ExtendedFloatingActionButton
+3.SmallFloatingActionButton
+4.SmallExtendedFloatingActionButton
+5.MediumFloatingActionButton
+6.MediumExtendedFloatingActionButton
+7.LargeFloatingActionButton
+8.LargeExtendedFloatingActionButton
