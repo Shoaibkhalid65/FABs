@@ -25,6 +25,7 @@ import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.ToggleFloatingActionButton
 import androidx.compose.material3.ToggleFloatingActionButtonDefaults
+import androidx.compose.material3.ToggleFloatingActionButtonDefaults.animateIcon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -38,6 +39,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.fabs.R
+import java.nio.file.WatchEvent
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -48,24 +50,18 @@ fun ToggleFab(){
         onCheckedChange = {
             isChecked=it
         },
-        modifier = Modifier,
-        containerColor = ToggleFloatingActionButtonDefaults.containerColor(Color.Gray,Color.Green),
+        modifier = Modifier.padding(bottom = 15.dp, end = 15.dp),
+        containerColor = ToggleFloatingActionButtonDefaults.containerColor(Color.Cyan,Color.Green),
         contentAlignment = Alignment.TopEnd,
-        containerSize = ToggleFloatingActionButtonDefaults.containerSize(80.dp,70.dp),
+        containerSize = ToggleFloatingActionButtonDefaults.containerSize(60.dp,70.dp),
         containerCornerRadius = ToggleFloatingActionButtonDefaults.containerCornerRadius(12.dp,12.dp)
     ) {
-        if(isChecked)
-        Icon(
-            imageVector = Icons.Default.Favorite,
-            contentDescription = "add icon"
-        )
-        else
-        Icon(
-            imageVector = Icons.Default.FavoriteBorder,
-            contentDescription = "add icon"
-        )
 
-
+        Icon(
+            imageVector = if(isChecked) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+            contentDescription = "add icon",
+            modifier = Modifier.animateIcon({checkedProgress})
+        )
     }
 }
 
@@ -87,18 +83,11 @@ fun ToggleMenu() {
                 )
             ) {
                 Icon(
-                    imageVector =
-                        if (!isExpended) {
-                            Icons.Default.Add
-                        } else {
-                            Icons.Default.Cancel
-                        },
+                    imageVector = if (!isExpended) Icons.Default.Add else Icons.Default.Cancel,
                     contentDescription = "add icon"
                 )
             }
         },
-        modifier = Modifier,
-        horizontalAlignment = Alignment.End,
     ) {
         if (isExpended) {
             Column {
@@ -115,7 +104,7 @@ fun ToggleMenuItem(text: String,imageVector: ImageVector){
     Row {
         Text(
             text = text,
-            modifier = Modifier.padding(top = 7.dp).height(30.dp).width(70.dp).background(color = Color.Gray, shape = RoundedCornerShape(6.dp)).padding(top = 4.dp),
+            modifier = Modifier.padding(top = 9.dp).height(28.dp).width(70.dp).background(color = Color.DarkGray, shape = RoundedCornerShape(6.dp)).padding(top = 2.dp),
             textAlign = TextAlign.Center,
             color = Color.White
         )
@@ -126,7 +115,8 @@ fun ToggleMenuItem(text: String,imageVector: ImageVector){
             containerColor = colorResource(R.color.green)
         ) {
             Icon(
-                imageVector,"home icon"
+                imageVector,"home icon",
+                tint = Color.White
             )
         }
     }

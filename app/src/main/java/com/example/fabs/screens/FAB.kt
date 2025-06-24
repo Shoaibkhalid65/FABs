@@ -11,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LargeExtendedFloatingActionButton
@@ -19,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -72,7 +74,7 @@ fun FAB(){
 fun LongClickableFAB(){
     val context=LocalContext.current
     val viewConfiguration= LocalViewConfiguration.current
-    val interactionSource=remember { MutableInteractionSource() }
+    val interactionSource= remember { MutableInteractionSource() }
     LaunchedEffect(interactionSource) {
         var isLongClick=false
         interactionSource.interactions.collectLatest {interaction->
@@ -94,7 +96,7 @@ fun LongClickableFAB(){
             }
         }
     }
-    LargeExtendedFloatingActionButton(
+    ExtendedFloatingActionButton (
         text = {
             Text(
                 text = "Add Note"
@@ -108,7 +110,8 @@ fun LongClickableFAB(){
         },
         onClick = {},
         expanded = true,
-        interactionSource = interactionSource
+        interactionSource = interactionSource,
+        modifier = Modifier.padding(end = 15.dp, bottom = 15.dp)
     )
 
 }

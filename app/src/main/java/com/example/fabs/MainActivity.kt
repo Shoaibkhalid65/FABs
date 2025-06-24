@@ -44,7 +44,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.fabs.screens.ExtendedFAB
 import com.example.fabs.screens.FAB
+import com.example.fabs.screens.FabItemsMenu
+import com.example.fabs.screens.FloatingActionButtonMenuSample
 import com.example.fabs.screens.LongClickableFAB
+import com.example.fabs.screens.LongClickableFab
 import com.example.fabs.screens.ToggleFab
 import com.example.fabs.screens.ToggleMenu
 import com.example.fabs.ui.theme.FABsTheme
@@ -57,16 +60,17 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     floatingActionButton = {
-                        ToggleMenu()
+                        ToggleFab()
                     }
                 ) { innerPadding ->
                     LazyColumn (modifier = Modifier.padding(innerPadding)){
                         items(50){
-                            Text("item no $it", modifier = Modifier.padding(10.dp).fillMaxWidth(), textAlign = TextAlign.Center)
+                            Text("item no $it", modifier = Modifier.padding(16.dp).fillMaxWidth(), textAlign = TextAlign.Center)
                         }
                     }
                 }
             }
+
         }
     }
 }
